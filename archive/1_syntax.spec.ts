@@ -1,5 +1,8 @@
 import { test } from '@playwright/test'
 
+// if an action (click, type etc.) returns a promise
+// async / await are needed
+
 test.describe('test suite', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('https://react-redux.realworld.io/#/login?_k=5jewux')
