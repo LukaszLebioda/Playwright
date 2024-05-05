@@ -1,22 +1,31 @@
+import { expect } from '@playwright/test'
+import { Navigation } from './Navigation'
+
 export class ProductsPage {
-	locators = {
-		addToCartButton: '[data-qa="product-button"]',
-	}
+	// selectors = {
+	// 	addButton: '[data-qa="product-button"]',
+	// }
 
 	constructor(page) {
 		this.page = page
-		this.addButtons = page.locator(this.locators.addToCartButton)
+		this.addButtons = page.locator('[data-qa="product-button"]')
 	}
 
 	visit = async () => {
 		await this.page.goto('/')
 	}
 
-	addToCartByIndex = async index => {
-		// await this.page.locator('[data-qa="product-button"]').nth(index).click()
-		await this.addButtons.nth(index).waitFor()
-		await this.addButtons.nth(index).click()
+	addToBasketByIndex = async (index) => {
+		const specificAddButton = this.addButtons.nth(index)
+		await specificAddButton.waitFor()
+		await expect(specificAddButton).toHaveText('Add to Basket')
+
+		const navigation = new Navigation(this.page)
+
+		const basketCounterBeforeAdding = await navigation.getBasketCounter()
+		await specificAddButton.click()
+		await expect(specificAddButton).toHaveText('Remove from Basket')
+		const basketCounterAfterAdding = await navigation.getBasketCounter()
+		expect(basketCounterAfterAdding).toBeGreaterThan(basketCounterBeforeAdding)
 	}
 }
-
-// export const productPage = new ProductPage()
