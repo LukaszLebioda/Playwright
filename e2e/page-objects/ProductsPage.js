@@ -8,6 +8,7 @@ export class ProductsPage {
 
 	constructor(page) {
 		this.page = page
+
 		this.addButtons = page.locator('[data-qa="product-button"]')
 	}
 
