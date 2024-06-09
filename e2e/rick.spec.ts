@@ -17,4 +17,5 @@ test.only('first playwrigth test practise', async ({ page }) => {
 	// await page.pause()
 	const checkout = new Checkout(page)
 	await checkout.removeCheapestProduct()
+	// await page.pause()
 })

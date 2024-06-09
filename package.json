@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"llama": "ollama run llama3",
 		"test": "playwright test --headed"
 	},
 	"keywords": [],
