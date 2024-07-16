@@ -13,7 +13,7 @@ export default defineConfig({
 	/* MY ENTRY: It was 'tests', I changed it to 'e2e' */
 	testDir: './e2e',
 	/* MY ENTRY: default timeout is 30000 */
-	// timeout: 5000,
+	timeout: 5000,
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -38,15 +38,15 @@ export default defineConfig({
 
 	/* Configure projects for major browsers */
 	projects: [
-		// {
-		// 	name: 'chromium',
-		// 	use: { ...devices['Desktop Chrome'] },
-		// },
-
 		{
-			name: 'firefox',
-			use: { ...devices['Desktop Firefox'] },
+			name: 'chromium',
+			use: { ...devices['Desktop Chrome'] },
 		},
+
+		// {
+		// 	name: 'firefox',
+		// 	use: { ...devices['Desktop Firefox'] },
+		// },
 
 		// {
 		// 	name: 'webkit',

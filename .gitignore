@@ -14,3 +14,7 @@ node_modules/
 
 /fixtures/Rick's Store
 .DS_Store
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
