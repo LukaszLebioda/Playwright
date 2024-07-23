@@ -25,8 +25,8 @@ every Playwright method returns:
 - await this.page.pause() => stops the execution at any moment in the code, which allows to inspect the tested page and adress the locators;
 - Playwright Inspector => 'pick locator' (or console devtools);
 - in config file default reporter is 'html', I changed it to: 'line';
-- basic flow:
-  const checkoutLink = page.getByRole('link', { name: 'Checkout' })
-  await checkoutLink.waitFor()
-  await checkoutLink.click()
-  await expect(checkoutLink).toHaveText('checkout')
+- basic flow (test):
+  const checkoutLink = page.getByRole('link', { name: 'Checkout' });
+  await checkoutLink.waitFor();
+  await checkoutLink.click();
+  await expect(checkoutLink).toHaveText('checkout');
