@@ -15,22 +15,20 @@ export class Checkout {
 		await this.basketCards.first().waitFor()
 		const itemsBeforeRemoval = await this.basketCards.count()
 		await this.basketItemPrice.first().waitFor()
-		/* allInnetTexts() = > GET ALL TEXTS INTO AN ARRAY */
 		const allPriceTexts = await this.basketItemPrice.allInnerTexts()
-		console.warn({ allPriceTexts })
-		/* allInnetTexts() = > GET ALL TEXTS INTO AN ARRAY */
-		const justNumbers = allPriceTexts.map((element) => {
-			const withoutDollarSign = element.replace('$', '')
-			return parseInt(withoutDollarSign, 10)
+		const justNumbers = allPriceTexts.map((el) => {
+			const wihtoutDollarSign = el.replace('$', '')
+			return parseInt(wihtoutDollarSign, 10)
 		})
 		const smallestPrice = Math.min(...justNumbers)
 		const smallestPriceIndex = justNumbers.indexOf(smallestPrice)
-		const specificRemoveButton =
-			this.basketItemRemoveButton.nth(smallestPriceIndex)
+		const specificRemoveButton = await this.basketItemRemoveButton.nth(
+			smallestPriceIndex
+		)
 		await specificRemoveButton.waitFor()
 		await specificRemoveButton.click()
-		// console.log({ smallestPriceIndex })
 		await expect(this.basketCards).toHaveCount(itemsBeforeRemoval - 1)
+
 		// await this.page.pause()
 	}
 }
