@@ -30,3 +30,4 @@ every Playwright method returns:
   await checkoutLink.waitFor();
   await checkoutLink.click();
   await expect(checkoutLink).toHaveText('checkout');
+  await page.waitForURL('/something')
