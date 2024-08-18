@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test'
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -10,8 +10,8 @@ import { defineConfig, devices } from '@playwright/test'
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-	/* MY ENTRY: It was 'tests', I changed it to 'e2e' */
-	testDir: './e2e',
+	/* MY ENTRY: It was 'tests', than I changed it to 'e2e', than again to 'tests' */
+	testDir: "./tests",
 	/* MY ENTRY: default timeout is 30000 */
 	timeout: 5 * 1000,
 	/* Run tests in files in parallel */
@@ -24,24 +24,24 @@ export default defineConfig({
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	/* MY ENTRY: default reporter is 'html'; 'line' is a terminal reporter */
-	reporter: 'line',
+	reporter: "line",
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
-		headless: false, // my ENTRY from Koushik
+		headless: true,
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		// baseURL: 'http://uitestingplayground.com',
 		// baseURL: 'https://demoqa.com/',
-		baseURL: 'http://localhost:2221',
+		baseURL: "http://localhost:2221",
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: 'on-first-retry',
+		trace: "on-first-retry",
 	},
 
 	/* Configure projects for major browsers */
 	projects: [
 		{
-			name: 'chromium',
-			use: { ...devices['Desktop Chrome'] },
+			name: "chromium",
+			use: { ...devices["Desktop Chrome"] },
 		},
 
 		// {
@@ -81,4 +81,4 @@ export default defineConfig({
 	//   url: 'http://127.0.0.1:3000',
 	//   reuseExistingServer: !process.env.CI,
 	// },
-})
+});

@@ -1,10 +1,11 @@
-import { test } from '@playwright/test'
-import { ProductsPage } from './../page-objects/ProductsPage.js'
-import { Navigation } from './../page-objects/Navigation.js'
-import { Checkout } from './../page-objects/Checkout.js'
-import { LoginPage } from './../page-objects/LoginPage.js'
+import { test } from "@playwright/test"
+import { ProductsPage } from "../page-objects/ProductsPage.js"
+import { Navigation } from "../page-objects/Navigation.js"
+import { Checkout } from "../page-objects/Checkout.js"
+import { LoginPage } from "../page-objects/LoginPage.js"
+import { RegisterPage } from "../page-objects/RegisterPage.js"
 
-test.only('New user full end-to-end journey', async ({ page }) => {
+test("New user full end-to-end journey", async ({ page }) => {
 	const productsPage = new ProductsPage(page)
 	await productsPage.visit()
 
@@ -24,5 +25,8 @@ test.only('New user full end-to-end journey', async ({ page }) => {
 
 	const login = new LoginPage(page)
 	await login.moveToSignup()
+
+	const registerPage = new RegisterPage(page)
+	await registerPage.signUpAsNewUser()
 	// await page.pause()
 })
