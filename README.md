@@ -40,11 +40,12 @@ every Playwright method returns:
 
 2. JAK TESTOWAĆ:
 
-- npx playwright codegen https://demo-bank.vercel.app/; CODEGEN => SUPER!
+- npx playwright codegen https://demo-bank.vercel.app/;
 
 - this will open tested page (by default in playwright's chromium) and Playwright's inspector;
 - just perform any action (like logging in) on the tested page and test will be automatically written within Playwright's inspector;
 - to stop this press RECORD on Playwright's inspector;
+- RECORD can be used on Playwright's inspector at any time, not only with codegen functionality;
 
 - npx playwright test (to execute the test);
 - npx playwright test --headed (to execute the test in headed mode);

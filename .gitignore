@@ -13,8 +13,12 @@ node_modules/
 /playwright/.cache/
 
 /fixtures/Rick's Store
+/fixtures/ArtemApp/
+
 .DS_Store
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+

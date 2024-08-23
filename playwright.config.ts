@@ -13,7 +13,7 @@ export default defineConfig({
 	/* MY ENTRY: It was 'tests', than I changed it to 'e2e', than again to 'tests' */
 	testDir: "./tests",
 	/* MY ENTRY: default timeout is 30000 */
-	timeout: 5 * 1000,
+	timeout: 7 * 1000,
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
