@@ -7,13 +7,12 @@ import { LoginPage } from "./../page-objects/LoginPage.js";
 import { RegisterPage } from "./../page-objects/RegisterPage.js";
 import { DeliveryDetails } from "./../page-objects/DeliveryDetails.js";
 import { deliveryDetails as userAddress } from "./../fixtures/deliveryDetails.js";
+import { PaymentPage } from "./../page-objects/PaymentPage.js";
 
 test.only("New user full end-to-end journey", async ({ page }) => {
 	const productsPage = new ProductsPage(page);
 	await productsPage.visit();
-
 	await productsPage.sortByCheapest();
-
 	await productsPage.addProductToBasket(0);
 	await productsPage.addProductToBasket(1);
 	await productsPage.addProductToBasket(2);
@@ -23,7 +22,6 @@ test.only("New user full end-to-end journey", async ({ page }) => {
 
 	const checkout = new Checkout(page);
 	await checkout.removeCheapestProduct();
-
 	await checkout.continueToCheckout();
 
 	const login = new LoginPage(page);
@@ -38,5 +36,8 @@ test.only("New user full end-to-end journey", async ({ page }) => {
 	const deliveryDetails = new DeliveryDetails(page);
 	await deliveryDetails.fillDeliveryDetails(userAddress);
 	await deliveryDetails.saveDeliveryDetails();
-	await page.pause();
+	await deliveryDetails.continueToPayment();
+
+	const paymentPage = new PaymentPage(page);
+	await paymentPage.activateDiscount();
 });

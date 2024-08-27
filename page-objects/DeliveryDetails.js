@@ -30,6 +30,10 @@ export class DeliveryDetails {
 		this.savedAddressCountry = page.locator(
 			'[data-qa="saved-address-country"]'
 		);
+
+		this.continueToPaymentButton = page.getByRole("button", {
+			name: "Continue to payment",
+		});
 	}
 
 	fillDeliveryDetails = async (userAddress) => {
@@ -79,5 +83,11 @@ export class DeliveryDetails {
 		expect(await this.savedAddressCountry.first().innerText()).toEqual(
 			await this.countryDropdown.inputValue()
 		);
+	};
+
+	continueToPayment = async () => {
+		await this.continueToPaymentButton.waitFor();
+		await this.continueToPaymentButton.click();
+		await this.page.waitForURL(/\/payment/, { timeout: 3000 });
 	};
 }
