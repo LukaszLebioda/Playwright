@@ -1,0 +1,15 @@
+export class MyAccount {
+	constructor(page) {
+		this.page = page;
+
+		this.myAccountHeader = page.getByRole("heading", { name: "My Account" });
+	}
+
+	visit = async () => {
+		await this.page.goto("/my-account");
+	};
+
+	waitForPageHeading = async () => {
+		await this.myAccountHeader.waitFor();
+	};
+}

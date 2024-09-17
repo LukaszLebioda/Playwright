@@ -1,17 +1,19 @@
 import { test } from "@playwright/test";
 import { v4 as uuidv4 } from "uuid";
-import { ProductsPage } from "./../page-objects/ProductsPage.js";
-import { Navigation } from "./../page-objects/Navigation.js";
-import { Checkout } from "./../page-objects/Checkout.js";
-import { LoginPage } from "./../page-objects/LoginPage.js";
-import { RegisterPage } from "./../page-objects/RegisterPage.js";
-import { DeliveryDetails } from "./../page-objects/DeliveryDetails.js";
-import { deliveryDetails as userAddress } from "./../fixtures/deliveryDetails.js";
-import { PaymentPage } from "./../page-objects/PaymentPage.js";
+import { ProductsPage } from "../page-objects/ProductsPage.js";
+import { Navigation } from "../page-objects/Navigation.js";
+import { Checkout } from "../page-objects/Checkout.js";
+import { LoginPage } from "../page-objects/LoginPage.js";
+import { RegisterPage } from "../page-objects/RegisterPage.js";
+import { DeliveryDetails } from "../page-objects/DeliveryDetails.js";
+import { deliveryDetails as userAddress } from "../fixtures/deliveryDetails.js";
+import { paymentDetails } from "../fixtures/paymentDetails.js";
+import { PaymentPage } from "../page-objects/PaymentPage.js";
 
-test.only("New user full end-to-end journey", async ({ page }) => {
+test("New user full end-to-end journey", async ({ page }) => {
 	const productsPage = new ProductsPage(page);
 	await productsPage.visit();
+
 	await productsPage.sortByCheapest();
 	await productsPage.addProductToBasket(0);
 	await productsPage.addProductToBasket(1);
@@ -40,4 +42,6 @@ test.only("New user full end-to-end journey", async ({ page }) => {
 
 	const paymentPage = new PaymentPage(page);
 	await paymentPage.activateDiscount();
+	await paymentPage.fillPaymentDetails(paymentDetails);
+	await paymentPage.completePayment();
 });

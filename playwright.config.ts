@@ -12,8 +12,12 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
 	/* MY ENTRY: It was 'tests', than I changed it to 'e2e', than again to 'tests' */
 	testDir: "./tests",
-	/* MY ENTRY: default timeout is 30000 */
+	/* MY ENTRY: this is waiting for elements; default timeout is 30000 */
 	timeout: 15 * 1000,
+	/* MY ENTRY: this is waiting for assertions; it was added by me */
+	expect: {
+		timeout: 5000,
+	},
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -43,27 +47,23 @@ export default defineConfig({
 			name: "chromium",
 			use: { ...devices["Desktop Chrome"] },
 		},
-
 		// {
 		// 	name: 'firefox',
 		// 	use: { ...devices['Desktop Firefox'] },
 		// },
-
 		// {
 		// 	name: 'webkit',
 		// 	use: { ...devices['Desktop Safari'] },
 		// },
-
 		/* Test against mobile viewports. */
 		// {
-		//   name: 'Mobile Chrome',
-		//   use: { ...devices['Pixel 5'] },
+		// 	name: "Mobile Chrome",
+		// 	use: { ...devices["Pixel 5"] },
 		// },
 		// {
-		//   name: 'Mobile Safari',
-		//   use: { ...devices['iPhone 12'] },
+		// 	name: "Mobile Safari",
+		// 	use: { ...devices["iPhone 12"] },
 		// },
-
 		/* Test against branded browsers. */
 		// {
 		//   name: 'Microsoft Edge',

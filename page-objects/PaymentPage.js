@@ -20,6 +20,12 @@ export class PaymentPage {
 		this.discountedValue = page.locator(
 			'[data-qa="total-with-discount-value"]'
 		);
+
+		this.creditCardOwner = page.getByPlaceholder("Credit card owner");
+		this.creditCardNumber = page.getByPlaceholder("Credit card number");
+		this.creditCardExpiryDate = page.getByPlaceholder("Valid until");
+		this.creditCardCVC = page.getByPlaceholder("Credit card CVC");
+		this.payButton = page.locator('[data-qa="pay-button"]');
 	}
 
 	activateDiscount = async () => {
@@ -55,5 +61,23 @@ export class PaymentPage {
 		const totalValueNumber = parseInt(totalValueValueTextWithoutDollarSign);
 
 		expect(discountedValueNumber).toBeLessThan(totalValueNumber);
+	};
+
+	fillPaymentDetails = async (paymentDetails) => {
+		await this.creditCardOwner.waitFor();
+		await this.creditCardOwner.fill(paymentDetails.creditCardOwner);
+		await this.creditCardNumber.waitFor();
+		await this.creditCardNumber.fill(paymentDetails.creditCardNumber);
+		await this.creditCardExpiryDate.waitFor();
+		await this.creditCardExpiryDate.fill(paymentDetails.creditCardExpiryDate);
+		await this.creditCardCVC.waitFor();
+		await this.creditCardCVC.fill(paymentDetails.creditCardCVC);
+	};
+
+	completePayment = async () => {
+		await this.payButton.waitFor();
+		await this.payButton.click();
+
+		await this.page.waitForURL(/\/thank-you/, { timeout: 3000 });
 	};
 }
