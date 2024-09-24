@@ -18,6 +18,8 @@ export default defineConfig({
 	expect: {
 		timeout: 5000,
 	},
+	/* MY ENTRY => globalSetup: to run sth before all of the tests */
+	globalSetup: require.resolve("./globalSetup.js"),
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */

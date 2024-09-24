@@ -3,6 +3,7 @@ export class MyAccount {
 		this.page = page;
 
 		this.myAccountHeader = page.getByRole("heading", { name: "My Account" });
+		this.errorMessage = page.locator('[data-qa="error-message"]');
 	}
 
 	visit = async () => {
@@ -11,5 +12,9 @@ export class MyAccount {
 
 	waitForPageHeading = async () => {
 		await this.myAccountHeader.waitFor();
+	};
+
+	waitForErrorMessage = async () => {
+		await this.errorMessage.waitFor();
 	};
 }

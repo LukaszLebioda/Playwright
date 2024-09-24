@@ -1,24 +1,14 @@
 node_modules/
 /test-results/
 /playwright-report/
-/blob-report/
-/playwright/.cache/
-/test-results/
 /playwright-report/
-/blob-report/
-/playwright/.cache/
-/test-results/
-/playwright-report/
-/blob-report/
 /playwright/.cache/
 
 /fixtures/Rick's Store
 /fixtures/ArtemApp/
 
 .DS_Store
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+
+.env
 
 
