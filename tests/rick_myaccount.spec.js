@@ -5,7 +5,7 @@ import { MyAccount } from "./../page-objects/MyAccount.js";
 import { getLoginToken } from "./../api-calls/getLoginToken.js";
 import { adminDetails } from "./../fixtures/userDetails.js";
 
-test.only("My Account using cookie  and mocking network requests", async ({
+test("My Account using cookie  and mocking network requests", async ({
 	page,
 }) => {
 	const loginToken = await getLoginToken(

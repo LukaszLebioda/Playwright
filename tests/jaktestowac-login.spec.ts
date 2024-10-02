@@ -25,7 +25,7 @@ test.describe.skip("User login to Demobank", () => {
 		);
 	});
 
-	test.only("unsuccessful login with too short password", async ({ page }) => {
+	test("unsuccessful login with too short password", async ({ page }) => {
 		await page.goto("https://demo-bank.vercel.app/");
 		await page.getByTestId("login-input").click();
 		await page.getByTestId("login-input").fill("testerLO");
