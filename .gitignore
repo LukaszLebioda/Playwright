@@ -4,7 +4,8 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 
-/fixtures/Rick's Store
+/fixtures/RickStore
+/fixtures/RickStoreLinux
 /fixtures/ArtemApp/
 
 .DS_Store

@@ -24,6 +24,13 @@ every Playwright method returns:
 - promise, e.g. `await page.goto("\")` (await is needed),
 - locator, e.g. `page.getByRole('button')` (await not needed); locator is not a promise, so it can be assigned to a variable;
 
+# GitHub Actions
+
+- create .github/workflows/playwright.yaml;
+- in \*.yml file create pipeline flow;
+- download Rick's Store App for linux: "shopping-store-linux-amd64";
+- on https://hub.docker.com/ find docker image for playwright, that matches the playwright version installed (in package.json);
+
 # testing ways
 
 ## Rick UD:
