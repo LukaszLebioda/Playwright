@@ -5,7 +5,6 @@ node_modules/
 /playwright/.cache/
 
 /fixtures/RickStore
-/fixtures/RickStoreLinux
 /fixtures/ArtemApp/
 
 .DS_Store
