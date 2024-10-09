@@ -19,7 +19,7 @@ export default defineConfig({
 		timeout: 5000,
 	},
 	/* MY ENTRY => globalSetup: to run sth before all of the tests */
-	globalSetup: require.resolve("./globalSetup.js"),
+	// globalSetup: require.resolve("./globalSetup.js"),
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,9 +29,9 @@ export default defineConfig({
 	*/
 	forbidOnly: false,
 	/* Retry on CI only */
-	retries: process.env.CI ? 2 : 0,
+	// retries: process.env.CI ? 2 : 0,
 	/* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 1 : undefined,
+	// workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	/* MY ENTRY: default reporter is 'html'; 'line' is a terminal reporter */
 	reporter: "line",

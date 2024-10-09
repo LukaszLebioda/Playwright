@@ -1,0 +1,26 @@
+# *.yaml or *.yml is all about indentation (mostly 2 spaces)
+name: Playwright Tests # pipeline's name
+on: # when to run
+  push: # run on every push
+    branches: [master] # run on every push to main branch (or more branches)
+jobs: # set of tasks that runs sequentially as defined by the user
+  playwrighttests: # job's name
+    runs-on: ubuntu-latest # we choose a linux distribution for CI/CD
+    container: # we're going to execute our test in docker
+      image: mcr.microsoft.com/playwright:v1.45.0-focal # container given by microsoft (from https://hub.docker.com/; docs on playwright with docker: https://playwright.dev/docs/docker), with version 1.45.0 that is the version  of playwright (to be checked in package.json)
+      env: # here we provide environment variables we use in our tests
+        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }} # a way to use env variables in github actions: go to my repository / settings / secrets and variables / actions / Add new secret (name: ADMIN_PASSWORD, secret: password)
+    steps: # what is to be done step by step (like npm install for instance)
+      - name: Checkout repository # name of the step
+        uses: actions/checkout@v2 # what the step does ("uses" means it's a github action actually, that does e.a. git pull & git fetch)
+      - name: Run tests # name of the step
+        run:
+          | # instead of "uses", we explicitely type "run" to use terminal commands independently of any github action; | pipe allows us to use mulitple commands below | "&"" next to app's name allows other commands to run (otherwise the Rick's App would run forever, preventing other commands to be executed) | echo prints out commands | "npm ci" installs dependencies from package-lock.json | test:ci is a script in package.json ("playwright test") and we use it to differentiate between CI test run and local test run (and it doesn't need to be --headed obviously)
+          echo "Allow github actions to execute the Rick's App"
+          chmod +x ./fixtures/RickStoreLinux &
+          echo "Start the shopping store application" 
+          ./fixtures/RickStoreLinux $
+          echo "Install dependencies from lockfile"
+          npm ci
+          echo "Run playwright tests"
+          npm run test:ci

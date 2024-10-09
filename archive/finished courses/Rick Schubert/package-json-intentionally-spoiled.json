@@ -1,0 +1,23 @@
+{
+	"name": "playwright",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"llama": "ollama run llama3",
+		"test": "playwright test --headed",
+		"testui": "playwright test --ui", 
+		"test:ci": "playwright test"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@playwright/test": "^1.45.0"
+	},
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"node-fetch": "^2.6.7",
+		"uuid": "^10.0.0"
+	}
+}
