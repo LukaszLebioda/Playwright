@@ -1,5 +1,11 @@
 # General info:
 
+## options
+
+- npx playwright (headless),
+- npx playwright --headed,
+- npx playwright --ui (ui mode),
+
 ## testing pages / apps
 
 - Rick (Udemy): /Users/llebioda/Desktop/Private/Playwright/fixtures/RickStore
@@ -29,7 +35,7 @@ every Playwright method returns:
 - create .github/workflows/playwright.yaml;
 - in \*.yml file create pipeline flow;
 - download Rick's Store App for linux: "shopping-store-linux-amd64";
-- on https://hub.docker.com/ find docker image for playwright, that matches the playwright version installed (in package.json);
+- on https://hub.docker.com/ find docker image for playwright, that matches the playwright version installed (in package.json) (mcr.microsoft.com/playwright:v1.45.0-focal);
 
 # testing ways
 

@@ -4,11 +4,10 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 
-/fixtures/RickStore
 /fixtures/ArtemApp/
 
 .DS_Store
 
-.env
+
 
 
