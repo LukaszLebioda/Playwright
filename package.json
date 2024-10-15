@@ -6,7 +6,8 @@
 	"scripts": {
 		"llama": "ollama run llama3",
 		"test": "playwright test --headed",
-		"testui": "playwright test --ui", 
+		"testheadless": "playwright test",
+		"testui": "playwright test --ui",
 		"test:ci": "playwright test"
 	},
 	"keywords": [],

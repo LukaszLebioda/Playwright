@@ -1,19 +1,24 @@
 # General info:
 
-## options
+## options to run tests
 
-- npx playwright (headless),
-- npx playwright --headed,
-- npx playwright --ui (ui mode),
+- `npx playwright test` (headless by default),
+- `npx playwright show-report` (only when reporter is "html" in playwright.config.js),
+- `npx playwright test --project=webkit` (runs only webkit, but if uncommented in playwright.config.js),
+- `npx playwright test --headed`,
+- `npx playwright test --ui` (ui mode),
+- `npx playwright test filename.spec.js` (test file has to be placed in test folder "testDir", as stated in playwright.config.js),
+- `npx playwright test -g "name of the test"` (to run only one test from "describe/test" block"),
 
-## testing pages / apps
-
-- Rick (Udemy): /Users/llebioda/Desktop/Private/Playwright/fixtures/RickStore
-- Jak testować: demo-bank.vercel.app
+or npm run whateverComesFromScript (package.json), e.g.:
+`"test": "playwright test --headed"`, (npm run test) (we can turn the headed mode on permanently in playwright-config.js => headless: false)
+`"testheadless": "playwright test"`, (npm run testheadless)
+`"testui": "playwright test --ui"`, (npm run testui)
+`"test:ci": "playwright test`" (npm run test:ci)
 
 ## playwright installation
 
-npm init playwright (or @latest / or @1.17.123) it will generate:
+npm init playwright (or @latest / or e.g. @1.17.123) it will generate:
 
 - node_modules (`npm i` / npm install not needed),
 - package.json & package-lock.json (`npm init` / npm init -y not needed),
@@ -41,25 +46,20 @@ every Playwright method returns:
 
 ## Rick UD:
 
-- package.json => `test": "playwright test --headed` / `npm run test`;
 - playwright.config.js => `reporter: "line"`
 - `await this.page.pause()` => stops the execution at any moment in the code, which allows to inspect the tested page and adress the locators;
 - Playwright Inspector => 'pick locator' (or console devtools);
 - in config file default reporter is 'html', I changed it to: 'line';
+- often use of waitFor() to assert that an element is visible before an action is performed on that element (better logs);
 
 ## Jak testować YT:
 
 - code repository:
   https://github.com/jaktestowac/playwright_automatyzacja_wprowadzenie
 
+- playwright.config.js => `reporter: "html"` (opens this reporter automatically when test fails; if test passes => npx playwright show-report);
 - `npx playwright codegen https://demo-bank.vercel.app/`;
 - this will open tested page (by default in playwright's chromium) and Playwright's inspector;
 - just perform any action (like logging in) on the tested page and test will be automatically written within Playwright's inspector;
 - to stop this press RECORD on Playwright's inspector;
 - RECORD can be used on Playwright's inspector at any time, not only with codegen functionality;
-
-- `npx playwright test` (to execute the test);
-- `npx playwright test --headed` (to execute the test in headed mode);
-- we can turn the headed mode on permanently in playwright-config.js => `headless: false`,
-- playwright.config.js => `reporter: "html"` (opens this reporter automatically when test fails)
-- `npx playwright show-report` (if playwright.config.js => reporter: "html"),
