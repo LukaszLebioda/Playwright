@@ -12,9 +12,9 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
 	/* MY ENTRY: It was 'tests', than I changed it to 'e2e', than again to 'tests' */
 	testDir: "./tests",
-	/* MY ENTRY: this is waiting for elements; default timeout is 30000 */
+	/* MY ENTRY: waiting for elements; default TEST timeout is 30000; we can also use "globalTimeout: 60 * 1000" that is higher in hierarchy than test timeout */
 	timeout: 15 * 1000,
-	/* MY ENTRY: this is waiting for assertions; it was added by me */
+	/* MY ENTRY: this is waiting for locator assertions; like: await expect(locator).toHaveText("") */
 	expect: {
 		timeout: 5000,
 	},
@@ -33,8 +33,8 @@ export default defineConfig({
 	/* Opt out of parallel tests on CI. */
 	// workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	/* MY ENTRY: default reporter is 'html'; 'line' is a terminal reporter used by Rick Schubert */
-	reporter: "html",
+	/* MY ENTRY: it was just: reporter: "html"; we can use: always, never and on-failure; default reporter is 'html'; 'line' is a terminal reporter used by Rick Schubert */
+	reporter: [["html", { open: "never" }]],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		headless: true,
@@ -44,7 +44,10 @@ export default defineConfig({
 		baseURL: "http://localhost:2221",
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: "on-first-retry",
+		trace: "on-first-retry", // MY ENTRY: or: "on" (to generate trace report every time, not only after second failed attempt)
+		/* MY ENTRY: action or navigation timeouts can be added to overwrite timeout or globalTimeout value */
+		// actionTimeout: 5000,
+		// navigationTimeout: 5000,
 	},
 
 	/* Configure projects for major browsers */

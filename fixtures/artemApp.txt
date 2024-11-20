@@ -1,6 +1,0 @@
-- clone pw-practice-app
-- go to ArtemApp/pw-practice-app directory
-- npm install --force
-
-- to run local server => npm start
-- to open app => localhost:4200
