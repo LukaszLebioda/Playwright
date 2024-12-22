@@ -1,8 +1,9 @@
-const lala = function (a, b) {
-	return a * b;
-};
+function createEmployee(name = "unknown", surname = "unknown") {
+	return {
+		name: name,
+		surnmane: surname,
+	};
+}
 
-console.log(lala(4, 10));
-
-const lops = lala;
-console.log(lops(100, 9));
+console.log(createEmployee("flops"));
+console.log(createEmployee());
