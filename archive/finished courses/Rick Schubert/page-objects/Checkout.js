@@ -25,9 +25,8 @@ export class Checkout {
 		});
 		const smallestPrice = Math.min(...justNumbers);
 		const smallestPriceIndex = justNumbers.indexOf(smallestPrice);
-		const specificRemoveButton = await this.basketItemRemoveButton.nth(
-			smallestPriceIndex
-		);
+		const specificRemoveButton =
+			await this.basketItemRemoveButton.nth(smallestPriceIndex);
 		await specificRemoveButton.waitFor();
 		await specificRemoveButton.click();
 		await expect(this.basketCards).toHaveCount(itemsBeforeRemoval - 1);

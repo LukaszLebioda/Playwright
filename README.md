@@ -1,3 +1,3 @@
 # General info:
 
-description has beem temporarily moved to AApp;
+description has been temporarily moved to AApp;

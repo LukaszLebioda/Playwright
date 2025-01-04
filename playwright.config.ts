@@ -34,7 +34,7 @@ export default defineConfig({
 	// workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	/* MY ENTRY: it was just: reporter: "html"; we can use: always, never and on-failure; default reporter is 'html'; 'line' is a terminal reporter used by Rick Schubert */
-	reporter: [["html", { open: "never" }]],
+	reporter: [["html", { open: "on-failure" }]],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		headless: true,
@@ -44,7 +44,9 @@ export default defineConfig({
 		baseURL: "http://localhost:2221",
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: "on-first-retry", // MY ENTRY: or: "on" (to generate trace report every time, not only after second failed attempt)
+		trace: "retain-on-failure", // MY ENTRY: video is recorded for every test, but stored only for failed tests; by default it was: "on-first-retry"; or we could use: "on" (to generate trace report every time, not only after second failed attempt)
+		/* MY ENTRY: video is recorded for every test, but stored only for failed tests */
+		video: "retain-on-failure",
 		/* MY ENTRY: action or navigation timeouts can be added to overwrite timeout or globalTimeout value */
 		// actionTimeout: 5000,
 		// navigationTimeout: 5000,
