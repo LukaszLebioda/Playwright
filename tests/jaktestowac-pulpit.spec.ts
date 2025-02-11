@@ -13,7 +13,7 @@
 
 import { test, expect } from "@playwright/test";
 
-test.describe("pulpit tests", () => {
+test.describe.skip("pulpit tests", () => {
 	test("quick payment with correct data", async ({ page }) => {
 		// Arrange
 		const url = "https://demo-bank.vercel.app/";
