@@ -5,8 +5,9 @@ export default defineConfig({
 	testDir: "./tests", // directory with test specs
 	timeout: 15 * 1000, // locator timeout, default -> 30000
 	expect: { timeout: 5000 }, // assertion timeout
-	fullyParallel: true,
+	fullyParallel: false, // to use only single worker at a time
 	forbidOnly: false, // default -> !!process.env.CI
+	retries: 1, // or -> process.env.CI ? 2 : 1
 	workers: 1, // default -> process.env.CI ? 1 : undefined,
 	// other reporter -> line
 	reporter: [["html", { open: "on-failure" }]], // or "never"

@@ -1,16 +1,3 @@
-//-----------------------------------------------------------------
-// npx playwright codegen https://demo-bank.vercel.app/;
-// npx playwright test (default: headless, --headed); page.pause();
-// npx playwright test --ui (test with Playwright GUI);
-// or run tests in VS Code only (Playright test plugin]);
-//-----------------------------------------------------------------
-
-/* interesting stuff:
-- focus(), blur();
-- fill() -> click() not needed;
-- pause(), waitFor();
-*/
-
 import { test, expect } from "@playwright/test";
 
 test.describe.skip("pulpit tests", () => {

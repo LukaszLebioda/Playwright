@@ -1,0 +1,14 @@
+{
+	"cookies": [],
+	"origins": [
+        {
+            "https://conduit-api.bondaracademy.com/api/users/login",
+	        "localStorage": [
+		        {
+			        "name": "token",
+			        "value": "gdfdcsfvsdblcsdkjcbsdlkjwlkj423p249fwd"
+		        }
+	        ]
+        }
+    ]
+}

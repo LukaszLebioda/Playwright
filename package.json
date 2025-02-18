@@ -4,17 +4,16 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"llama": "ollama run llama3",
-		"test": "playwright test --headed",
-		"testheadless": "playwright test",
-		"testui": "playwright test --ui",
-		"test:ci": "playwright test"
+		"test": "playwright test",
+		"testui": "playwright test --ui"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@faker-js/faker": "^9.5.0",
 		"@playwright/test": "^1.45.0",
+		"@types/node": "^22.13.4",
 		"prettier": "3.4.2"
 	},
 	"dependencies": {
