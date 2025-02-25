@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "playwright test",
-		"testui": "playwright test --ui"
+		"testui": "playwright test --ui",
+		"default": "playwright test test.spec.ts --project=chromium"
 	},
 	"keywords": [],
 	"author": "",
@@ -17,7 +18,7 @@
 		"prettier": "3.4.2"
 	},
 	"dependencies": {
-		"dotenv": "^16.0.3",
+		"dotenv": "^16.4.7",
 		"node-fetch": "^2.6.7",
 		"uuid": "^10.0.0"
 	}

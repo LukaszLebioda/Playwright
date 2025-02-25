@@ -14,6 +14,16 @@ test.describe("", () => {
 		await page.getByRole("textbox", { name: "Password" }).fill(password);
 		await page.getByRole("button", { name: "Sign in" }).click();
 
+		// // general screenshot
+		// await page.screenshot({ path: "screenshot.png" });
+		// // 1-element-screenshot
+		// await page
+		// 	.getByRole("textbox", { name: "Password" })
+		// 	.screenshot({ path: "screenshotten.png" });
+		// // binary screenshot
+		// const buffer = await page.screenshot();
+		// console.log(buffer.toString("base64"));
+
 		expect(page.locator(".error-messages li")).toHaveText(
 			"email or password is invalid"
 		);
