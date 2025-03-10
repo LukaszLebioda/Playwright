@@ -16,6 +16,8 @@ export default defineConfig({
 		trace: "retain-on-failure", // or -> "on", "on-first-retry";
 		video: "retain-on-failure", // or -> "on", "on-first-retry";
 	},
+	// globalSetup: require.resolve("./global-setup.ts"),
+	// globalTeardown: require.resolve("./global-teardown.ts"),
 	projects: [
 		// {
 		// 	name: "test",
@@ -26,10 +28,11 @@ export default defineConfig({
 		// }
 		{
 			name: "chromium",
+			// testIgnore: "test.spec.ts",
 			use: { ...devices["Desktop Chrome"] },
 			// dependencies: ["test"],
 			// timeout: 60 * 1000,
-			// testMAtch: "test.spec.ts",
+			// testMatch: "test.spec.ts",
 		},
 		// {
 		// 	name: 'firefox',

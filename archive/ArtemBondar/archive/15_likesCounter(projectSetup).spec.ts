@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 
 // in this test we are clicking on the first like button
 // for that we need a setup file which will create an article
-// newArticle.setup.ts
+// e.g. newArticle.setup.ts
 
 // and also we have to crate a separate projects in config file:
 // one project for article setup and another for like counter
